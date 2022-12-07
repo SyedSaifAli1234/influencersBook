@@ -1,7 +1,7 @@
 import image from "../images/login.jpg";
 import logo from "../images/logo.svg";
 import {socialMediaAuth, signIn} from "../service/FirebaseService";
-import {facebookProvider, googleProvider} from "../config/authMethods";
+import {facebookProvider, googleProvider, twitterProvider} from "../config/authMethods";
 import {useRef} from "react";
 import {useNavigate} from "react-router-dom";
 import { SocialIcon } from 'react-social-icons';
@@ -56,12 +56,14 @@ const Login = () => {
                                         </div>
                                         <input name="login" id="login" className="btn btn-block login-btn mb-4" type="submit" value="Login"/>
                                     </form>
-                                    <p className="login-card-footer-text">Don't have an account? <a className="text-reset" onClick={(e)=>e.preventDefault()}>Register here</a></p>
-                                    <a className="forgot-password-link" onClick={(e)=>e.preventDefault()}>Login with:</a>
+                                    <p className="login-card-footer-text">Don't have an account?
+                                        <a className="text-reset ml-1" style={{cursor:"pointer"}} onClick={(e)=>{e.preventDefault();navigate('/register')}}>Register here</a>
+                                    </p>
+                                    <a className="forgot-password-link" onClick={(e)=>e.preventDefault()}>Sign in with:</a>
                                     <nav className="login-card-footer-nav mt-2">
                                         <SocialIcon network="google" className="socialIcons" onClick={()=>handleSocialLogin(googleProvider)}/>
                                         <SocialIcon network="facebook" className="socialIcons" onClick={()=>handleSocialLogin(facebookProvider)}/>
-                                        <SocialIcon network="twitter" className="socialIcons" />
+                                        <SocialIcon network="twitter" className="socialIcons" onClick={()=>handleSocialLogin(twitterProvider)}/>
                                     </nav>
                                 </div>
                             </div>

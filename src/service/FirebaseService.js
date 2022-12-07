@@ -13,7 +13,7 @@ export const socialMediaAuth = (provider) => {
             });
 }
 
-export const createAccount = (email, password) => createUserWithEmailAndPassword(auth, email, password);
+export const register = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 
 export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
