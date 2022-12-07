@@ -61,11 +61,11 @@ const Login = () => {
                                     </p>
                                     <a className="forgot-password-link" onClick={(e)=>e.preventDefault()}>Sign in with:</a>
                                     <div className={"container"}>
-                                        <div className="row">
+                                        <div className="row row-border">
                                             <div className={"col-1 fb btn"}>
-                                                <i className="fa fa-facebook fa-fw"></i>
+                                                <i className="fa fa-facebook fa-fw"/>
                                             </div>
-                                            <div className={"col-11"}>
+                                            <div className={"col-7 m-0 p-0"}>
                                                 <a href="#" className="fb btn">
                                                     Login with Facebook
                                                 </a>
@@ -73,19 +73,19 @@ const Login = () => {
                                         </div>
                                         <div className="row">
                                             <div className={"col-1 twitter btn"}>
-                                                <i className="fa fa-twitter fa-fw"></i>
+                                                <i className="fa fa-twitter fa-fw"/>
                                             </div>
-                                            <div className={"col-11"}>
-                                                <a href="#" className="twitter btn">
+                                            <div className={"col-7 m-0 p-0"}>
+                                                <a href="#" className="btn">
                                                     Login with Twitter
                                                 </a>
                                             </div>
                                         </div>
                                         <div className="row">
                                             <div className={"col-1 google btn"}>
-                                                <i className="fa fa-google fa-fw"></i>
+                                                <i className="fa fa-google fa-fw"/>
                                             </div>
-                                            <div className={"col-11"}>
+                                            <div className={"col-7 m-0 p-0"}>
                                                 <a href="#" className="google btn">
                                                     Login with Google+
                                                 </a>
