@@ -60,35 +60,35 @@ const Login = () => {
                                         <a className="text-reset ml-1" style={{cursor:"pointer"}} onClick={(e)=>{e.preventDefault();navigate('/register')}}>Register here</a>
                                     </p>
                                     <a className="forgot-password-link" onClick={(e)=>e.preventDefault()}>Sign in with:</a>
-                                    <div className={"container"}>
-                                        <div className="row row-border">
-                                            <div className={"col-1 fb btn"}>
-                                                <i className="fa fa-facebook fa-fw"/>
-                                            </div>
-                                            <div className={"col-7 m-0 p-0"}>
-                                                <a href="#" className="fb btn">
-                                                    Login with Facebook
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div className={"col-1 twitter btn"}>
-                                                <i className="fa fa-twitter fa-fw"/>
-                                            </div>
-                                            <div className={"col-7 m-0 p-0"}>
-                                                <a href="#" className="btn">
-                                                    Login with Twitter
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div className="row">
+                                    <div className="container">
+                                        <div className="row" onClick={()=>handleSocialLogin(googleProvider)}>
                                             <div className={"col-1 google btn"}>
                                                 <i className="fa fa-google fa-fw"/>
                                             </div>
                                             <div className={"col-7 m-0 p-0"}>
-                                                <a href="#" className="google btn">
+                                                <span className="google btn">
                                                     Login with Google+
-                                                </a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div className="row" onClick={()=>handleSocialLogin(facebookProvider)}>
+                                            <div className={"col-1 fb btn"}>
+                                                <i className="fa fa-facebook fa-fw"/>
+                                            </div>
+                                            <div className={"col-7 m-0 p-0"}>
+                                                <span className="fb btn">
+                                                    Login with Facebook
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div className="row" onClick={()=>handleSocialLogin(twitterProvider)}>
+                                            <div className={"col-1 twitter btn"}>
+                                                <i className="fa fa-twitter fa-fw"/>
+                                            </div>
+                                            <div className={"col-7 m-0 p-0"}>
+                                                <span className="twitter btn">
+                                                    Login with Twitter
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
