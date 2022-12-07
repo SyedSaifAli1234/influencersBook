@@ -65,7 +65,7 @@ const Login = () => {
                                             <div className={"col-2 google btn"}>
                                                 <i className="fa fa-google fa-fw"/>
                                             </div>
-                                            <div className={"col-7 m-0 p-0"}>
+                                            <div className={"col-9 m-0 p-0"}>
                                                 <span className="google btn">
                                                     Login with Google+
                                                 </span>
@@ -75,7 +75,7 @@ const Login = () => {
                                             <div className={"col-2 fb btn"}>
                                                 <i className="fa fa-facebook fa-fw"/>
                                             </div>
-                                            <div className={"col-7 m-0 p-0"}>
+                                            <div className={"col-9 m-0 p-0"}>
                                                 <span className="fb btn">
                                                     Login with Facebook
                                                 </span>
@@ -85,7 +85,7 @@ const Login = () => {
                                             <div className={"col-2 twitter btn"}>
                                                 <i className="fa fa-twitter fa-fw"/>
                                             </div>
-                                            <div className={"col-7 m-0 p-0"}>
+                                            <div className={"col-9 m-0 p-0"}>
                                                 <span className="twitter btn">
                                                     Login with Twitter
                                                 </span>
