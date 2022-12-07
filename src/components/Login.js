@@ -62,7 +62,7 @@ const Login = () => {
                                     <a className="forgot-password-link" onClick={(e)=>e.preventDefault()}>Sign in with:</a>
                                     <div className="container">
                                         <div className="row" onClick={()=>handleSocialLogin(googleProvider)}>
-                                            <div className={"col-1 google btn"}>
+                                            <div className={"col-2 google btn"}>
                                                 <i className="fa fa-google fa-fw"/>
                                             </div>
                                             <div className={"col-7 m-0 p-0"}>
@@ -72,7 +72,7 @@ const Login = () => {
                                             </div>
                                         </div>
                                         <div className="row" onClick={()=>handleSocialLogin(facebookProvider)}>
-                                            <div className={"col-1 fb btn"}>
+                                            <div className={"col-2 fb btn"}>
                                                 <i className="fa fa-facebook fa-fw"/>
                                             </div>
                                             <div className={"col-7 m-0 p-0"}>
@@ -82,7 +82,7 @@ const Login = () => {
                                             </div>
                                         </div>
                                         <div className="row" onClick={()=>handleSocialLogin(twitterProvider)}>
-                                            <div className={"col-1 twitter btn"}>
+                                            <div className={"col-2 twitter btn"}>
                                                 <i className="fa fa-twitter fa-fw"/>
                                             </div>
                                             <div className={"col-7 m-0 p-0"}>
