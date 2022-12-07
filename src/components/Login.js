@@ -60,11 +60,38 @@ const Login = () => {
                                         <a className="text-reset ml-1" style={{cursor:"pointer"}} onClick={(e)=>{e.preventDefault();navigate('/register')}}>Register here</a>
                                     </p>
                                     <a className="forgot-password-link" onClick={(e)=>e.preventDefault()}>Sign in with:</a>
-                                    <nav className="login-card-footer-nav mt-2">
-                                        <SocialIcon network="google" className="socialIcons" onClick={()=>handleSocialLogin(googleProvider)}/>
-                                        <SocialIcon network="facebook" className="socialIcons" onClick={()=>handleSocialLogin(facebookProvider)}/>
-                                        <SocialIcon network="twitter" className="socialIcons" onClick={()=>handleSocialLogin(twitterProvider)}/>
-                                    </nav>
+                                    <div className={"container"}>
+                                        <div className="row">
+                                            <div className={"col-1 fb btn"}>
+                                                <i className="fa fa-facebook fa-fw"></i>
+                                            </div>
+                                            <div className={"col-11"}>
+                                                <a href="#" className="fb btn">
+                                                    Login with Facebook
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className={"col-1 twitter btn"}>
+                                                <i className="fa fa-twitter fa-fw"></i>
+                                            </div>
+                                            <div className={"col-11"}>
+                                                <a href="#" className="twitter btn">
+                                                    Login with Twitter
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className={"col-1 google btn"}>
+                                                <i className="fa fa-google fa-fw"></i>
+                                            </div>
+                                            <div className={"col-11"}>
+                                                <a href="#" className="google btn">
+                                                    Login with Google+
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
