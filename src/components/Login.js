@@ -3,18 +3,32 @@ import logo from "../images/logo.svg";
 import {socialMediaAuth, signIn} from "../service/FirebaseService";
 import {facebookProvider, googleProvider} from "../config/authMethods";
 import {useRef} from "react";
+import {useNavigate} from "react-router-dom";
+import { SocialIcon } from 'react-social-icons';
 
 const Login = () => {
     const email = useRef();
     const password = useRef();
-    const handleSocialLogin = async (provider) => {
-      const resp = await socialMediaAuth(provider);
-      console.log(resp);
+    const navigate = useNavigate();
+    const handleSocialLogin = (provider) => {
+      socialMediaAuth(provider)
+          .then(resp => {
+              sessionStorage.setItem("userName",resp.email);
+              navigate('/home');
+          })
+          .catch(err => {
+              console.log(err);
+          })
     }
-    const loginHandler = async (event) => {
+    const loginHandler =  (event) => {
         event.preventDefault();
-        const resp = await signIn(email?.current?.value, password?.current?.value);
-        console.log(resp);
+        signIn(email?.current?.value, password?.current?.value)
+            .then(resp => {
+                sessionStorage.setItem("userName",resp.user.email);
+                navigate('/home');
+            }).catch(err => {
+                console.log(err);
+            })
     }
     return (
         <>
@@ -42,11 +56,12 @@ const Login = () => {
                                         </div>
                                         <input name="login" id="login" className="btn btn-block login-btn mb-4" type="submit" value="Login"/>
                                     </form>
-                                    <a className="forgot-password-link" onClick={(e)=>e.preventDefault()}>Forgot password?</a>
                                     <p className="login-card-footer-text">Don't have an account? <a className="text-reset" onClick={(e)=>e.preventDefault()}>Register here</a></p>
-                                    <nav className="login-card-footer-nav">
-                                        <button onClick={()=>handleSocialLogin(googleProvider)}>Google</button>
-                                        <button onClick={()=>handleSocialLogin(facebookProvider)}>Facebook</button>
+                                    <a className="forgot-password-link" onClick={(e)=>e.preventDefault()}>Login with:</a>
+                                    <nav className="login-card-footer-nav mt-2">
+                                        <SocialIcon network="google" className="socialIcons" onClick={()=>handleSocialLogin(googleProvider)}/>
+                                        <SocialIcon network="facebook" className="socialIcons" onClick={()=>handleSocialLogin(facebookProvider)}/>
+                                        <SocialIcon network="twitter" className="socialIcons" />
                                     </nav>
                                 </div>
                             </div>

@@ -70,10 +70,10 @@ main {
   .login-card-footer-text {
     font-size: 16px;
     color: #0d2366;
-    margin-bottom: 60px; }
+    margin-bottom: 20px; }
     @media (max-width: 767px) {
       .login-card-footer-text {
-        margin-bottom: 24px; } }
+        margin-bottom: 20px; } }
   .login-card-footer-nav a {
     font-size: 14px;
     color: #919aa3; }
