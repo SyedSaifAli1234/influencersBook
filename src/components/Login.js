@@ -52,13 +52,14 @@ const Login = () => {
                                     </div>
                                     <p className="login-card-description">Sign into your account</p>
                                     <form onSubmit={(event)=>loginHandler(event)}>
-                                        <div className="form-group">
+                                        <div className="form-group input-container">
                                             <label htmlFor="email" className="sr-only">Email</label>
-                                            <input type="email" name="email" id="email" className="form-control" placeholder="Email address" ref={email} required/>
+                                            <p className="text-dark"> <b> link.tree/ </b></p>
+                                            <input type="email" name="email" id="email" className="form-control" placeholder="Email address" ref={email} required style={{ paddingLeft: "85px"}}/>
                                         </div>
-                                        <div className="form-group mb-4">
+                                        <div className="form-group mb-4 input-container">
                                             <label htmlFor="password" className="sr-only">Password</label>
-                                            <input type="password" name="password" id="password" className="form-control" placeholder="***********" ref={password} required/>
+                                            <input type="password" name="password" id="password" className="form-control" placeholder="Password" ref={password} required/>
                                         </div>
                                         <input name="login" id="login" className="btn btn-block login-btn mb-4" type="submit" value="Login"/>
                                     </form>

@@ -79,3 +79,15 @@ main {
     color: #919aa3; }
 
 /*# sourceMappingURL=login.css.map */
+
+.input-container {
+  position: relative;
+  background-color: #d0d0ce;
+  border-radius: 5px;
+}
+
+.input-container > p {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
