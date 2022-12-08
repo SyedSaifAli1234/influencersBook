@@ -4,7 +4,6 @@ import {socialMediaAuth, signIn} from "../service/FirebaseService";
 import {facebookProvider, googleProvider, twitterProvider} from "../config/authMethods";
 import {useRef} from "react";
 import {useNavigate} from "react-router-dom";
-import InstagramLogin from "react-instagram-oauth";
 
 const Login = () => {
     const email = useRef();
@@ -98,15 +97,9 @@ const Login = () => {
                                                 </span>
                                             </div>
                                         </div>
-                                        <div className="row" onClick={()=>handleSocialLogin(twitterProvider)}>
+                                        <div className="row" onClick={()=>window.open('https://loginback-production.up.railway.app/redirect', 'firebaseAuth', 'height=315,width=400')}>
                                             <div className={"col-11"}>
-                                                <InstagramLogin
-                                                    authCallback={authHandler}
-                                                    appId={"2669088873181727"}
-                                                    appSecret={"bcf9f03a399195854d8e4d3be65197ac"}
-                                                    redirectUri={"https://alexandrtovmach.github.io/react-instagram-login/"}
-                                                    scopes={["user_profile"]}
-                                                />
+                                                Instagram
                                             </div>
                                         </div>
                                     </div>
