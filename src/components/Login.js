@@ -99,11 +99,11 @@ const Login = () => {
                                             </div>
                                         </div>
                                         <div className="row" onClick={()=>window.open('https://loginback-production.up.railway.app/redirect', 'firebaseAuth', 'height=315,width=400')}>
-                                            <div className={"col-2 instagram btn"}>
+                                            <div className={"col-2 instagram btn"} style={{backgroundColor:"#be2596"}}>
                                                 <i className="fa fa-instagram fa-fw"/>
                                             </div>
                                             <div className={"col-9 m-0 p-0"}>
-                                                <span className="instagram btn">
+                                                <span className="btn text-white" style={{backgroundColor:"#be2596"}}>
                                                     Login with Instagram
                                                 </span>
                                             </div>
