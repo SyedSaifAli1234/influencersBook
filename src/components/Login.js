@@ -98,7 +98,7 @@ const Login = () => {
                                                 </span>
                                             </div>
                                         </div>
-                                        <div className="row" onClick={()=>window.open('https://loginback-production.up.railway.app/redirect', 'firebaseAuth', 'height=315,width=400')}>
+                                        <div className="row" onClick={()=>window.open('https://influencer.up.railway.app/redirect', 'firebaseAuth', 'height=315,width=400')}>
                                             <div className={"col-2 instagram btn"} style={{backgroundColor:"#be2596"}}>
                                                 <i className="fa fa-instagram fa-fw"/>
                                             </div>
