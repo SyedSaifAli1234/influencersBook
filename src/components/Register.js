@@ -3,6 +3,7 @@ import logo from "../images/logo.svg";
 import {useRef} from "react";
 import {register} from "../service/FirebaseService";
 import {useNavigate} from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Register = () => {
     const email = useRef();
@@ -13,11 +14,19 @@ const Register = () => {
         event.preventDefault();
         register(email?.current?.value, password?.current?.value)
             .then(resp => {
-                sessionStorage.setItem("userName",resp.user.email);
-                navigate('/home');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Account Registered Successfully!',
+                    text: 'Kindly Login now.',
+                });
+                navigate('/');
             }).catch(err => {
-            console.log(err);
-        })
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: err.message,
+            });
+        });
     }
 
     return (

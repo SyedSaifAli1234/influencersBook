@@ -4,6 +4,8 @@ import {socialMediaAuth, signIn} from "../service/FirebaseService";
 import {facebookProvider, googleProvider, twitterProvider} from "../config/authMethods";
 import {useRef} from "react";
 import {useNavigate} from "react-router-dom";
+import {getAuth, sendEmailVerification} from "firebase/auth";
+import Swal from 'sweetalert2'
 
 const Login = () => {
     const email = useRef();
@@ -19,23 +21,39 @@ const Login = () => {
               console.log(err);
           })
     }
+
     const loginHandler =  (event) => {
         event.preventDefault();
         signIn(email?.current?.value, password?.current?.value)
             .then(resp => {
-                sessionStorage.setItem("userName",resp.user.email);
-                navigate('/home');
+                if(!resp.user.emailVerified) {
+                    const auth = getAuth();
+                    sendEmailVerification(auth.currentUser)
+                        .then((res) => {
+                            Swal.fire({
+                                icon: 'info',
+                                title: 'Email Confirmation Required',
+                                text: 'Kindly verify your email via confirmation link sent to you.',
+                            });
+                        }).catch(err => {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: err.message,
+                            });
+                    });
+                } else {
+                    sessionStorage.setItem("userName",resp.user.email);
+                    navigate('/home');
+                }
             }).catch(err => {
-                console.log(err);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: err.message,
+                });
             })
     }
-    const authHandler = (err, data) => {
-        console.log(err, data);
-        if(data) {
-            sessionStorage.setItem("userName","Insta");
-            navigate('/home');
-        }
-    };
     return (
         <>
             <main className="d-flex align-items-center min-vh-100 py-3 py-md-0">
