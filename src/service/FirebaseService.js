@@ -1,5 +1,12 @@
 import firebase from "../config/firebase-config";
-import { getAuth, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword , signOut} from 'firebase/auth'
+import {
+    getAuth,
+    signInWithPopup,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    signOut,
+    RecaptchaVerifier, signInWithPhoneNumber
+} from 'firebase/auth'
 
 const auth = getAuth(firebase);
 
@@ -18,3 +25,13 @@ export const register = (email, password) => createUserWithEmailAndPassword(auth
 export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
 export const logOut = () => signOut(auth);
+
+export const setUpRecaptcha = (number) => {
+    const recaptchaVerifier = new RecaptchaVerifier(
+        "recaptcha-container",
+        {},
+        auth
+    );
+    recaptchaVerifier.render();
+    return signInWithPhoneNumber(auth, number, recaptchaVerifier);
+}

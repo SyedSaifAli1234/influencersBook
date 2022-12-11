@@ -84,6 +84,16 @@ const Login = () => {
                                     <p className="login-card-footer-text">Don't have an account?
                                         <a className="text-reset ml-1" style={{cursor:"pointer"}} onClick={(e)=>{e.preventDefault();navigate('/register')}}>Register here</a>
                                     </p>
+                                    <div className="container row" onClick={()=>navigate('/phone-login')}>
+                                        <div className={"col-2 instagram btn"} style={{backgroundColor:"#25b9be"}}>
+                                            <i className="fa fa-instagram fa-fw"/>
+                                        </div>
+                                        <div className={"col-9 m-0 p-0"}>
+                                                <span className="btn text-white" style={{backgroundColor:"#25b9be"}}>
+                                                    Sign in with phone
+                                                </span>
+                                        </div>
+                                    </div>
                                     <a className="forgot-password-link" onClick={(e)=>e.preventDefault()}>Sign in with:</a>
                                     <div className="container">
                                         <div className="row" onClick={()=>handleSocialLogin(googleProvider)}>
