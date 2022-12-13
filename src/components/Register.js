@@ -34,15 +34,13 @@ const Register = () => {
             <div className="container">
                 <div className="card login-card">
                     <div className="row no-gutters">
-                        <div className="col-md-5">
-                            <img src={image} alt="login" className="login-card-img"/>
-                        </div>
-                        <div className="col-md-7">
+                        <div className="col-md-2"></div>
+                        <div className="col-md-8">
                             <div className="card-body">
                                 <div className="brand-wrapper">
                                     <img src={logo} alt="logo" className="logo"/>
                                 </div>
-                                <p className="login-card-description">Register</p>
+                                <p className="login-card-description">Create your account</p>
                                 <form onSubmit={(event)=>registerHandler(event)}>
                                     <div className="form-group">
                                         <label htmlFor="email" className="sr-only">Email</label>
@@ -59,6 +57,7 @@ const Register = () => {
                                 </p>
                             </div>
                         </div>
+                        <div className="col-md-2"></div>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,5 @@
-import image from "../images/login.jpg";
 import logo from "../images/logo.svg";
-import {socialMediaAuth, signIn} from "../service/FirebaseService";
+import {signIn, socialMediaAuth} from "../service/FirebaseService";
 import {facebookProvider, googleProvider, twitterProvider} from "../config/authMethods";
 import {useRef} from "react";
 import {useNavigate} from "react-router-dom";
@@ -60,10 +59,8 @@ const Login = () => {
                 <div className="container">
                     <div className="card login-card">
                         <div className="row no-gutters">
-                            <div className="col-md-5">
-                                <img src={image} alt="login" className="login-card-img"/>
-                            </div>
-                            <div className="col-md-7">
+                            <div className="col-md-2"></div>
+                            <div className="col-md-8">
                                 <div className="card-body">
                                     <div className="brand-wrapper">
                                         <img src={logo} alt="logo" className="logo"/>
@@ -84,18 +81,18 @@ const Login = () => {
                                     <p className="login-card-footer-text">Don't have an account?
                                         <a className="text-reset ml-1" style={{cursor:"pointer"}} onClick={(e)=>{e.preventDefault();navigate('/register')}}>Register here</a>
                                     </p>
-                                    <div className="container row" onClick={()=>navigate('/phone-login')}>
-                                        <div className={"col-2 instagram btn"} style={{backgroundColor:"#25b9be"}}>
-                                            <i className="fa fa-instagram fa-fw"/>
-                                        </div>
-                                        <div className={"col-9 m-0 p-0"}>
+                                    <a className="forgot-password-link" onClick={(e)=>e.preventDefault()}>Sign in with:</a>
+                                    <div className="container">
+                                        <div className="row" onClick={()=>navigate('/phone-login')}>
+                                            <div className={"col-2 instagram btn"} style={{backgroundColor:"#25b9be"}}>
+                                                <i className="fa fa-instagram fa-fw"/>
+                                            </div>
+                                            <div className={"col-9 m-0 p-0"}>
                                                 <span className="btn text-white" style={{backgroundColor:"#25b9be"}}>
                                                     Sign in with phone
                                                 </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <a className="forgot-password-link" onClick={(e)=>e.preventDefault()}>Sign in with:</a>
-                                    <div className="container">
                                         <div className="row" onClick={()=>handleSocialLogin(googleProvider)}>
                                             <div className={"col-2 google btn"}>
                                                 <i className="fa fa-google fa-fw"/>
@@ -139,6 +136,7 @@ const Login = () => {
                                     </div>
                                 </div>
                             </div>
+                            <div className="col-md-2"></div>
                         </div>
                     </div>
                 </div>
