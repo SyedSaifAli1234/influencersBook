@@ -41,6 +41,12 @@ export const setUpRecaptcha = (number) => {
     return signInWithPhoneNumber(auth, number, recaptchaVerifier);
 }
 
+export const setUpRecaptchaInvisible = (number) => {
+    const recaptchaVerifier = new RecaptchaVerifier("recaptcha-container", {size: "invisible"}, auth);
+    recaptchaVerifier.render();
+    return signInWithPhoneNumber(auth, number, recaptchaVerifier);
+}
+
 export const addUser = async (id, user, collectionName) => await setDoc(doc(db, collectionName, id), {...user});
 
 export const getUser = async (id,collectionName) => await getDoc(doc(db, collectionName, id)).getData();

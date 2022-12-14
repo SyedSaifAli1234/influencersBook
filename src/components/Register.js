@@ -18,6 +18,14 @@ const Register = () => {
         navigate('/register2');
     }
 
+    const gotoPhoneOtp =  (e) => {
+        e.preventDefault();
+        sessionStorage.setItem("registerPhone","Y");
+        const user = {phoneNumber: phoneNumber, userName: userName?.current?.value};
+        sessionStorage.setItem("user",JSON.stringify(user));
+        navigate('/phone-login');
+    }
+
     return (
         <main className="d-flex align-items-center min-vh-100 py-3 py-md-0">
             <div className="container">
@@ -30,36 +38,40 @@ const Register = () => {
                                     <img src={logo} alt="logo" className="logo"/>
                                 </div>
                                 <p className="login-card-description">Create your account</p>
-                                <form onSubmit={(event)=>gotoNextStep(event)}>
-                                    <div className="form-group input-container">
-                                        <label htmlFor="userName" className="sr-only">userName</label>
-                                        <p className="text-dark"> <b> link.tree/ </b></p>
-                                        <input type="text" name="userName" id="userName" className="form-control" placeholder="Username" ref={userName} required style={{ paddingLeft: "85px"}}/>
-                                    </div>
-                                    {
-                                        typeCheck?(
-                                            <>
-                                                <div className="form-group input-container">
-                                                    <input type="email" name="email" id="email" className="form-control" placeholder="Email address" ref={email} required/>
-                                                </div>
-                                                <a className="ml-1" style={{cursor:"pointer"}} onClick={()=>{setTypeCheck(!typeCheck)}}><u>Use phone number instead</u></a>
-                                            </>
-                                            ):(
-                                                <>
-                                                    <div className="form-group border bg-light p-1">
-                                                        <PhoneInput
-                                                            defaultCountry="US"
-                                                            value={phoneNumber}
-                                                            onChange={setPhoneNumber}
-                                                            placeholder="Enter Phone Number"
-                                                        />
-                                                    </div>
-                                                    <a className="ml-1" style={{cursor:"pointer"}} onClick={()=>{setTypeCheck(!typeCheck)}}><u>Use Email instead</u></a>
-                                                </>
-                                            )
-                                    }
-                                    <input name="continue" id="continue" className="btn btn-block login-btn mb-4 mt-5" type="submit" value="Continue"/>
-                                </form>
+                                {
+                                    typeCheck?(
+                                        <form onSubmit={(event)=>gotoNextStep(event)}>
+                                            <div className="form-group input-container">
+                                                <label htmlFor="userName" className="sr-only">userName</label>
+                                                <p className="text-dark"> <b> link.tree/ </b></p>
+                                                <input type="text" name="userName" id="userName" className="form-control" placeholder="Username" ref={userName} required style={{ paddingLeft: "85px"}}/>
+                                            </div>
+                                            <div className="form-group input-container">
+                                                <input type="email" name="email" id="email" className="form-control" placeholder="Email address" ref={email} required/>
+                                            </div>
+                                            <a className="ml-1" style={{cursor:"pointer"}} onClick={()=>{setTypeCheck(!typeCheck)}}><u>Use phone number instead</u></a>
+                                            <input name="continue" id="continue" className="btn btn-block login-btn mb-4 mt-5" type="submit" value="Continue"/>
+                                        </form>
+                                    ): (
+                                        <form onSubmit={(event)=>gotoPhoneOtp(event)}>
+                                            <div className="form-group input-container">
+                                                <label htmlFor="userName" className="sr-only">userName</label>
+                                                <p className="text-dark"> <b> link.tree/ </b></p>
+                                                <input type="text" name="userName" id="userName" className="form-control" placeholder="Username" ref={userName} required style={{ paddingLeft: "85px"}}/>
+                                            </div>
+                                            <div className="form-group border bg-light p-1">
+                                                <PhoneInput
+                                                    defaultCountry="US"
+                                                    value={phoneNumber}
+                                                    onChange={setPhoneNumber}
+                                                    placeholder="Enter Phone Number"
+                                                />
+                                            </div>
+                                            <a className="ml-1" style={{cursor:"pointer"}} onClick={()=>{setTypeCheck(!typeCheck)}}><u>Use Email instead</u></a>
+                                            <input name="continue" id="continue" className="btn btn-block login-btn mb-4 mt-5" type="submit" value="Continue"/>
+                                        </form>
+                                    )
+                                }
                                 <p className="login-card-footer-text">
                                     <a className="text-reset ml-1" style={{cursor:"pointer"}} onClick={(e)=>{e.preventDefault();navigate('/')}}><u>Go back to Login?</u></a>
                                 </p>
