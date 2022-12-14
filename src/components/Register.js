@@ -1,34 +1,17 @@
-import image from "../images/login.jpg";
 import logo from "../images/logo.svg";
 import {useRef} from "react";
-import {register} from "../service/FirebaseService";
 import {useNavigate} from "react-router-dom";
-import Swal from "sweetalert2";
-import {facebookProvider, googleProvider, twitterProvider} from "../config/authMethods";
 
 const Register = () => {
-    const username = useRef();
+
+    const userName = useRef();
     const email = useRef();
-    const password = useRef();
     const navigate = useNavigate();
 
-    const registerHandler =  (event) => {
-        event.preventDefault();
-        register(email?.current?.value, password?.current?.value)
-            .then(resp => {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Account Registered Successfully!',
-                    text: 'Kindly Login now.',
-                });
-                navigate('/');
-            }).catch(err => {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: err.message,
-            });
-        });
+    const gotoNextStep = () => {
+        const user = {email: email?.current?.value, userName: userName?.current?.value};
+        sessionStorage.setItem("user",JSON.stringify(user));
+        navigate('/register2');
     }
 
     return (
@@ -36,23 +19,24 @@ const Register = () => {
             <div className="container">
                 <div className="card login-card">
                     <div className="row no-gutters">
-                        <div className="col-md-2"></div>
+                        <div className="col-md-2"/>
                         <div className="col-md-8">
                             <div className="card-body">
                                 <div className="brand-wrapper">
                                     <img src={logo} alt="logo" className="logo"/>
                                 </div>
                                 <p className="login-card-description">Create your account</p>
-                                <form onSubmit={(event)=>registerHandler(event)}>
-                                    <div className="form-group">
-                                        <label htmlFor="username" className="sr-only">Username</label>
-                                        <input type="text" name="username" id="username" className="form-control" placeholder="Username" ref={username} required/>
+                                <form>
+                                    <div className="form-group input-container">
+                                        <label htmlFor="userName" className="sr-only">userName</label>
+                                        <p className="text-dark"> <b> link.tree/ </b></p>
+                                        <input type="text" name="userName" id="userName" className="form-control" placeholder="Username" ref={userName} required style={{ paddingLeft: "85px"}}/>
                                     </div>
-                                    <div className="form-group">
+                                    <div className="form-group input-container">
                                         <label htmlFor="email" className="sr-only">Email</label>
                                         <input type="email" name="email" id="email" className="form-control" placeholder="Email address" ref={email} required/>
                                     </div>
-                                    <input name="login" id="login" className="btn btn-block login-btn mb-4" onClick={(e)=>{e.preventDefault();navigate('/register2')}} value="Continue"/>
+                                    <input name="continue" id="continue" className="btn btn-block login-btn mb-4" onClick={gotoNextStep} value="Continue"/>
                                 </form>
                                 <p className="login-card-footer-text">
                                     <a className="text-reset ml-1" style={{cursor:"pointer"}} onClick={(e)=>{e.preventDefault();navigate('/')}}>Go back to Login?</a>
@@ -72,7 +56,7 @@ const Register = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-2"></div>
+                        <div className="col-md-2"/>
                     </div>
                 </div>
             </div>

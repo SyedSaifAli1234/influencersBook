@@ -49,7 +49,7 @@ const PhoneLogin = () => {
             <div className="container">
                 <div className="card login-card">
                     <div className="row no-gutters">
-                        <div className="col-md-2"></div>
+                        <div className="col-md-2"/>
                         <div className="col-md-8">
                             <div className="card-body">
                                 <div className="p-4 box">
@@ -96,7 +96,7 @@ const PhoneLogin = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-2"></div>
+                        <div className="col-md-2"/>
                     </div>
                 </div>
             </div>

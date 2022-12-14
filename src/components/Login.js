@@ -1,13 +1,12 @@
 import logo from "../images/logo.svg";
-import {signIn, socialMediaAuth} from "../service/FirebaseService";
-import {facebookProvider, googleProvider, twitterProvider} from "../config/authMethods";
+import {getUserByUserName, signIn, socialMediaAuth} from "../service/FirebaseService";
 import {useRef} from "react";
 import {useNavigate} from "react-router-dom";
 import {getAuth, sendEmailVerification} from "firebase/auth";
 import Swal from 'sweetalert2'
 
 const Login = () => {
-    const email = useRef();
+    const userName = useRef();
     const password = useRef();
     const navigate = useNavigate();
     const handleSocialLogin = (provider) => {
@@ -20,37 +19,55 @@ const Login = () => {
               console.log(err);
           })
     }
+
     const loginHandler =  (event) => {
         event.preventDefault();
-        signIn(email?.current?.value, password?.current?.value)
-            .then(resp => {
-                if(!resp.user.emailVerified) {
-                    const auth = getAuth();
-                    sendEmailVerification(auth.currentUser)
-                        .then((res) => {
-                            Swal.fire({
-                                icon: 'info',
-                                title: 'Email Confirmation Required',
-                                text: 'Kindly verify your email via confirmation link sent to you.',
+        Swal.fire({
+            title: 'Please wait...',
+            html: '',
+            allowEscapeKey: false,
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading()
+            }
+        });
+        getUserByUserName(userName?.current?.value,"users").then(resp => {
+            resp.forEach((doc) => {
+                signIn(doc.data().email, password?.current?.value)
+                    .then(resp => {
+                        if(!resp.user.emailVerified) {
+                            const auth = getAuth();
+                            sendEmailVerification(auth.currentUser)
+                                .then((res) => {
+                                    Swal.close();
+                                    Swal.fire({
+                                        icon: 'info',
+                                        title: 'Email Confirmation Required',
+                                        text: 'Kindly verify your email via confirmation link sent to you.',
+                                    });
+                                }).catch(err => {
+                                Swal.close();
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: err.message,
+                                });
                             });
-                        }).catch(err => {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: err.message,
-                            });
+                        } else {
+                            Swal.close();
+                            sessionStorage.setItem("userName",resp.user.email);
+                            navigate('/home');
+                        }
+                    }).catch(err => {
+                    Swal.close();
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: err.message,
                     });
-                } else {
-                    sessionStorage.setItem("userName",resp.user.email);
-                    navigate('/home');
-                }
-            }).catch(err => {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: err.message,
                 });
-            })
+            });
+        });
     }
 
     return (
@@ -59,7 +76,7 @@ const Login = () => {
                 <div className="container">
                     <div className="card login-card">
                         <div className="row no-gutters">
-                            <div className="col-md-2"></div>
+                            <div className="col-md-2"/>
                             <div className="col-md-8">
                                 <div className="card-body">
                                     <div className="brand-wrapper">
@@ -68,9 +85,9 @@ const Login = () => {
                                     <p className="login-card-description">Sign into your account</p>
                                     <form onSubmit={(event)=>loginHandler(event)}>
                                         <div className="form-group input-container">
-                                            <label htmlFor="email" className="sr-only">Email</label>
+                                            <label htmlFor="userName" className="sr-only">userName</label>
                                             <p className="text-dark"> <b> link.tree/ </b></p>
-                                            <input type="email" name="email" id="email" className="form-control" placeholder="username" ref={email} required style={{ paddingLeft: "85px"}}/>
+                                            <input type="text" name="userName" id="userName" className="form-control" placeholder="Username" ref={userName} required style={{ paddingLeft: "85px"}}/>
                                         </div>
                                         <div className="form-group mb-4 input-container">
                                             <label htmlFor="password" className="sr-only">Password</label>
@@ -96,7 +113,7 @@ const Login = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-2"></div>
+                            <div className="col-md-2"/>
                         </div>
                     </div>
                 </div>
