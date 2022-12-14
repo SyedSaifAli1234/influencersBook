@@ -20,7 +20,6 @@ const Login = () => {
               console.log(err);
           })
     }
-
     const loginHandler =  (event) => {
         event.preventDefault();
         signIn(email?.current?.value, password?.current?.value)
@@ -53,6 +52,7 @@ const Login = () => {
                 });
             })
     }
+
     return (
         <>
             <main className="d-flex align-items-center min-vh-100 py-3 py-md-0">
@@ -70,7 +70,7 @@ const Login = () => {
                                         <div className="form-group input-container">
                                             <label htmlFor="email" className="sr-only">Email</label>
                                             <p className="text-dark"> <b> link.tree/ </b></p>
-                                            <input type="email" name="email" id="email" className="form-control" placeholder="Email address" ref={email} required style={{ paddingLeft: "85px"}}/>
+                                            <input type="email" name="email" id="email" className="form-control" placeholder="username" ref={email} required style={{ paddingLeft: "85px"}}/>
                                         </div>
                                         <div className="form-group mb-4 input-container">
                                             <label htmlFor="password" className="sr-only">Password</label>
@@ -83,53 +83,13 @@ const Login = () => {
                                     </p>
                                     <a className="forgot-password-link" onClick={(e)=>e.preventDefault()}>Sign in with:</a>
                                     <div className="container">
-                                        <div className="row" onClick={()=>navigate('/phone-login')}>
-                                            <div className={"col-2 instagram btn"} style={{backgroundColor:"#25b9be"}}>
-                                                <i className="fa fa-instagram fa-fw"/>
+                                        <div className="row pr-2" onClick={()=>navigate('/phone-login')}>
+                                            <div className={"col-2 phone btn"} style={{backgroundColor:"#25b9be"}}>
+                                                <i className="fa fa-phone fa-fw"/>
                                             </div>
                                             <div className={"col-9 m-0 p-0"}>
                                                 <span className="btn text-white" style={{backgroundColor:"#25b9be"}}>
                                                     Sign in with phone
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div className="row" onClick={()=>handleSocialLogin(googleProvider)}>
-                                            <div className={"col-2 google btn"}>
-                                                <i className="fa fa-google fa-fw"/>
-                                            </div>
-                                            <div className={"col-9 m-0 p-0"}>
-                                                <span className="google btn">
-                                                    Login with Google+
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div className="row" onClick={()=>handleSocialLogin(facebookProvider)}>
-                                            <div className={"col-2 fb btn"}>
-                                                <i className="fa fa-facebook fa-fw"/>
-                                            </div>
-                                            <div className={"col-9 m-0 p-0"}>
-                                                <span className="fb btn">
-                                                    Login with Facebook
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div className="row" onClick={()=>handleSocialLogin(twitterProvider)}>
-                                            <div className={"col-2 twitter btn"}>
-                                                <i className="fa fa-twitter fa-fw"/>
-                                            </div>
-                                            <div className={"col-9 m-0 p-0"}>
-                                                <span className="twitter btn">
-                                                    Login with Twitter
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div className="row" onClick={()=>window.open('https://influencer.up.railway.app/redirect', 'firebaseAuth', 'height=315,width=400')}>
-                                            <div className={"col-2 instagram btn"} style={{backgroundColor:"#be2596"}}>
-                                                <i className="fa fa-instagram fa-fw"/>
-                                            </div>
-                                            <div className={"col-9 m-0 p-0"}>
-                                                <span className="btn text-white" style={{backgroundColor:"#be2596"}}>
-                                                    Login with Instagram
                                                 </span>
                                             </div>
                                         </div>

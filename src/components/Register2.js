@@ -44,15 +44,11 @@ const Register = () => {
                                 </div>
                                 <p className="login-card-description">Create your account</p>
                                 <form onSubmit={(event)=>registerHandler(event)}>
-                                    <div className="form-group">
-                                        <label htmlFor="username" className="sr-only">Username</label>
-                                        <input type="text" name="username" id="username" className="form-control" placeholder="Username" ref={username} required/>
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="email" className="sr-only">Email</label>
-                                        <input type="email" name="email" id="email" className="form-control" placeholder="Email address" ref={email} required/>
-                                    </div>
-                                    <input name="login" id="login" className="btn btn-block login-btn mb-4" onClick={(e)=>{e.preventDefault();navigate('/register2')}} value="Continue"/>
+                                    <div className="form-group mb-4">
+                                        <label htmlFor="password" className="sr-only">Password</label>
+                                        <input type="password" name="password" id="password" className="form-control" placeholder="***********" ref={password} required/>
+                                     </div>
+                                    <input name="login" id="login" className="btn btn-block login-btn mb-4" type="submit" value="Register"/>
                                 </form>
                                 <p className="login-card-footer-text">
                                     <a className="text-reset ml-1" style={{cursor:"pointer"}} onClick={(e)=>{e.preventDefault();navigate('/')}}>Go back to Login?</a>
