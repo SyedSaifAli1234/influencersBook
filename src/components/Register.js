@@ -1,12 +1,15 @@
 import logo from "../images/logo.svg";
-import {useRef} from "react";
+import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import PhoneInput from "react-phone-number-input";
 
 const Register = () => {
 
     const userName = useRef();
     const email = useRef();
+    const [phoneNumber, setPhoneNumber] = useState("");
     const navigate = useNavigate();
+    const [typeCheck, setTypeCheck] = useState(true);
 
     const gotoNextStep = (event) => {
         event.preventDefault();
@@ -34,13 +37,27 @@ const Register = () => {
                                         <input type="text" name="userName" id="userName" className="form-control" placeholder="Username" ref={userName} required style={{ paddingLeft: "85px"}}/>
                                     </div>
                                     {
-
+                                        typeCheck?(
+                                            <>
+                                                <div className="form-group input-container">
+                                                    <input type="email" name="email" id="email" className="form-control" placeholder="Email address" ref={email} required/>
+                                                </div>
+                                                <a className="ml-1" style={{cursor:"pointer"}} onClick={()=>{setTypeCheck(!typeCheck)}}><u>Use phone number instead</u></a>
+                                            </>
+                                            ):(
+                                                <>
+                                                    <div className="form-group border bg-light p-1">
+                                                        <PhoneInput
+                                                            defaultCountry="US"
+                                                            value={phoneNumber}
+                                                            onChange={setPhoneNumber}
+                                                            placeholder="Enter Phone Number"
+                                                        />
+                                                    </div>
+                                                    <a className="ml-1" style={{cursor:"pointer"}} onClick={()=>{setTypeCheck(!typeCheck)}}><u>Use Email instead</u></a>
+                                                </>
+                                            )
                                     }
-                                    <div className="form-group input-container">
-                                        <label htmlFor="email" className="sr-only">Email</label>
-                                        <input type="email" name="email" id="email" className="form-control" placeholder="Email address" ref={email} required/>
-                                    </div>
-                                    <a className="ml-1" style={{cursor:"pointer"}} onClick={(e)=>{e.preventDefault();navigate('/')}}><u>Use phone number instead</u></a>
                                     <input name="continue" id="continue" className="btn btn-block login-btn mb-4 mt-5" type="submit" value="Continue"/>
                                 </form>
                                 <p className="login-card-footer-text">
