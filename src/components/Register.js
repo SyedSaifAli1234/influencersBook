@@ -8,7 +8,8 @@ const Register = () => {
     const email = useRef();
     const navigate = useNavigate();
 
-    const gotoNextStep = () => {
+    const gotoNextStep = (event) => {
+        event.preventDefault();
         const user = {email: email?.current?.value, userName: userName?.current?.value};
         sessionStorage.setItem("user",JSON.stringify(user));
         navigate('/register2');
@@ -26,7 +27,7 @@ const Register = () => {
                                     <img src={logo} alt="logo" className="logo"/>
                                 </div>
                                 <p className="login-card-description">Create your account</p>
-                                <form>
+                                <form onSubmit={(event)=>gotoNextStep(event)}>
                                     <div className="form-group input-container">
                                         <label htmlFor="userName" className="sr-only">userName</label>
                                         <p className="text-dark"> <b> link.tree/ </b></p>
@@ -36,7 +37,7 @@ const Register = () => {
                                         <label htmlFor="email" className="sr-only">Email</label>
                                         <input type="email" name="email" id="email" className="form-control" placeholder="Email address" ref={email} required/>
                                     </div>
-                                    <input name="continue" id="continue" className="btn btn-block login-btn mb-4" onClick={gotoNextStep} value="Continue"/>
+                                    <input name="continue" id="continue" className="btn btn-block login-btn mb-4" onClick={gotoNextStep} type="submit" value="Continue"/>
                                 </form>
                                 <p className="login-card-footer-text">
                                     <a className="text-reset ml-1" style={{cursor:"pointer"}} onClick={(e)=>{e.preventDefault();navigate('/')}}>Go back to Login?</a>
