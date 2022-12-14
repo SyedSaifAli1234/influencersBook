@@ -37,7 +37,7 @@ const Register = () => {
                                         <label htmlFor="email" className="sr-only">Email</label>
                                         <input type="email" name="email" id="email" className="form-control" placeholder="Email address" ref={email} required/>
                                     </div>
-                                    <input name="continue" id="continue" className="btn btn-block login-btn mb-4" onClick={gotoNextStep} type="submit" value="Continue"/>
+                                    <input name="continue" id="continue" className="btn btn-block login-btn mb-4" type="submit" value="Continue"/>
                                 </form>
                                 <p className="login-card-footer-text">
                                     <a className="text-reset ml-1" style={{cursor:"pointer"}} onClick={(e)=>{e.preventDefault();navigate('/')}}>Go back to Login?</a>
