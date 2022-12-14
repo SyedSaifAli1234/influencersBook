@@ -33,28 +33,19 @@ const Register = () => {
                                         <p className="text-dark"> <b> link.tree/ </b></p>
                                         <input type="text" name="userName" id="userName" className="form-control" placeholder="Username" ref={userName} required style={{ paddingLeft: "85px"}}/>
                                     </div>
+                                    {
+
+                                    }
                                     <div className="form-group input-container">
                                         <label htmlFor="email" className="sr-only">Email</label>
                                         <input type="email" name="email" id="email" className="form-control" placeholder="Email address" ref={email} required/>
                                     </div>
-                                    <input name="continue" id="continue" className="btn btn-block login-btn mb-4" type="submit" value="Continue"/>
+                                    <a className="ml-1" style={{cursor:"pointer"}} onClick={(e)=>{e.preventDefault();navigate('/')}}><u>Use phone number instead</u></a>
+                                    <input name="continue" id="continue" className="btn btn-block login-btn mb-4 mt-5" type="submit" value="Continue"/>
                                 </form>
                                 <p className="login-card-footer-text">
-                                    <a className="text-reset ml-1" style={{cursor:"pointer"}} onClick={(e)=>{e.preventDefault();navigate('/')}}>Go back to Login?</a>
+                                    <a className="text-reset ml-1" style={{cursor:"pointer"}} onClick={(e)=>{e.preventDefault();navigate('/')}}><u>Go back to Login?</u></a>
                                 </p>
-                                <a className="forgot-password-link" onClick={(e)=>e.preventDefault()}>Sign in with:</a>
-                                <div className="container">
-                                    <div className="row pr-2" onClick={()=>navigate('/phone-login')}>
-                                        <div className={"col-2 phone btn"} style={{backgroundColor:"#25b9be"}}>
-                                            <i className="fa fa-phone fa-fw"/>
-                                        </div>
-                                        <div className={"col-9 m-0 p-0"}>
-                                                <span className="btn text-white" style={{backgroundColor:"#25b9be"}}>
-                                                    Sign up with phone
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div className="col-md-2"/>
